@@ -5,8 +5,15 @@ export default function handleProfileSignup(firstName, lastName, filename) {
   const userPromise = signUpUser(firstName, lastName);
   const uploadPromise = uploadPhoto(filename);
   /* eslint-disable max-len */
-  return Promise.allSettled([userPromise, uploadPromise]).then((results) => results.map((result) => ({
-    status: result.status,
-    value: result.status === 'fulfilled' ? result.value : result.error,
-  })));
+  return Promise.allSettled([userPromise, uploadPromise]).then((values) => {
+    const result = [];
+    values.forEach((element) => {
+      if (element.status === 'fulfilled') {
+        result.push({ status: element.status, value: element.value });
+      } else {
+        result.push({ status: element.status, value: `${element.reason}` });
+      }
+    });
+    return result;
+  });
 }
