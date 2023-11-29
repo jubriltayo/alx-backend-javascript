@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// Syncheonous reading of a file
+// Synchronous reading of a file, groups of students based on field
 
 const fs = require('fs');
 
