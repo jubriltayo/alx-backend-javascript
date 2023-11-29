@@ -9,7 +9,7 @@ const countStudents = (path) => {
     const data = fs.readFileSync(path, 'utf-8');
     // get data line by line excluding the first row (with column title)
     const getLine = data.split('\n').slice(1);
-    console.log(`Number of students: ${getLine.length}`);
+    console.log(`Number of students: ${getLine.length - 1}`);
     // group students based on field of study and print in desired format
     const fieldData = {};
     getLine.forEach((studentRow) => {
