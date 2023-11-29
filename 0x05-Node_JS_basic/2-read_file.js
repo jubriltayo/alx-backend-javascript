@@ -5,7 +5,7 @@ const fs = require('fs');
 
 const countStudents = (path) => {
   try {
-    // read file from the path with the encoding
+    // read file synchronously from the path with the encoding
     const data = fs.readFileSync(path, 'utf-8');
     // get data line by line excluding the first row (with column title)
     const getLine = data.split('\n').slice(1);
