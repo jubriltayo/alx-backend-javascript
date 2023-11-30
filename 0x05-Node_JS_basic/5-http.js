@@ -22,7 +22,7 @@ const app = http.createServer(async (request, response) => {
 
     // get data line by line excluding the first row (with column title)
     const getLine = data.split('\n').slice(1);
-    response.write(`Number of students: ${getLine.length - 1}`);
+    response.write(`Number of students: ${getLine.length - 1}\n`);
     // group students based on field of study and print in desired format
     const fieldData = {};
     getLine.forEach((studentRow) => {
@@ -41,7 +41,7 @@ const app = http.createServer(async (request, response) => {
     });
     const fieldList = Object.keys(fieldData);
     fieldList.forEach((field) => {
-      response.write(`Number of students in ${field}: ${fieldData[field].length}. List: ${fieldData[field]}`);
+      response.write(`Number of students in ${field}: ${fieldData[field].length}. List: ${fieldData[field]}\n`);
     });
   }
   return response.end();
